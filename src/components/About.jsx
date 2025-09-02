@@ -5,7 +5,7 @@ export default function About(){
         <div>
           <h2 className="text-2xl sm:text-3xl font-bold">À propos</h2>
           <p className="mt-4 max-w-3xl text-slate-300">
-            Passionné par le design system, l'accessibilité et les performances web. J'aime transformer des idées en interfaces plaisantes et robustes, avec une attention particulière aux détails et à l'expérience utilisateur.
+          Je suis passionné par les nouvelles technologies et j’aime les explorer pour mieux comprendre leurs usages et leurs potentiels. J’aimerais participer, à mon échelle, à leur évolution et contribuer à transformer des idées en solutions concrètes.
           </p>
         </div>
         <div className="lg:flex lg:justify-end">
@@ -14,15 +14,15 @@ export default function About(){
             <ul className="space-y-2 text-sm text-slate-300">
               <li className="flex items-center gap-2">
                 <span className="w-2 h-2 bg-sky-400 rounded-full"></span>
-                Développement front-end moderne
+                Développement full-stack moderne 
               </li>
               <li className="flex items-center gap-2">
                 <span className="w-2 h-2 bg-sky-400 rounded-full"></span>
-                Design responsive et accessible
+                Gestion de projet agile
               </li>
               <li className="flex items-center gap-2">
                 <span className="w-2 h-2 bg-sky-400 rounded-full"></span>
-                Optimisation des performances
+                Determination sans faille
               </li>
             </ul>
           </div>

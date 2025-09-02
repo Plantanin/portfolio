@@ -6,7 +6,7 @@ export default function Hero(){
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div>
             <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight">
-              Bonjour, je suis <span className="text-sky-400">Sacha</span>
+              Bonjour, je suis <span className="text-sky-400">Sacha Pontens !</span>
             </h1>
             <p className="mt-4 max-w-2xl text-slate-300">
               Développeur web et web-mobile, j'entame un changement de trajectoire professionnelle pour devenir expert en mécatronique et en IA.

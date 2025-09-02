@@ -21,9 +21,28 @@ const vaultDescriptions = [
 ]
 
 const projects = [
-  { title: 'Coffre-fort électronique', description: 'Bootcamp Introduction à l\'électronique', tags: ['RFID', 'LED', 'Fusion 360', 'Keypad', 'C++'], images: ['/images/vault-1.jpg','/images/vault-2.jpg','/images/vault-3.jpg','/images/vault-4.jpg'], descriptions: vaultDescriptions },
-  { title: 'Formation RGPD', description: 'Projet de Formation Humaine - Groupe AEN', tags: ['RGPD', 'Formation'], image: '/images/rgpd-formation.jpg', zoomDescription: "Formation de sensibilisation sur le RGPD (Règlement Général sur la Protection des Données) dispensée aux étudiants en Droit de l'Université Toulouse Capitole. Projet de Formation Humaine du Groupe AEN en partenariat avec le Campus de Montauban." },
-  { title: 'Projet C', description: 'Dashboard interactif', tags: ['React', 'Charts'], wip: true },
+  { 
+    title: 'Coffre-fort électronique', 
+    description: 'Bootcamp Introduction à l\'électronique', 
+    tags: ['RFID', 'LED', 'Fusion 360', 'Keypad', 'C++'], 
+    images: ['/images/vault-1.jpg','/images/vault-2.jpg','/images/vault-3.jpg','/images/vault-4.jpg'], 
+    descriptions: vaultDescriptions 
+    
+  },
+  { 
+    title: 'Formation RGPD', 
+    description: 'Projet de Formation Humaine - Groupe AEN', 
+    tags: ['RGPD', 'Formation'], 
+    image: '/images/rgpd-formation.jpg', 
+    zoomDescription: "Formation de sensibilisation sur le RGPD (Règlement Général sur la Protection des Données) dispensée aux étudiants en Droit de l'Université Toulouse Capitole. Projet de Formation Humaine du Groupe AEN en partenariat avec le Campus de Montauban." 
+  },
+  { 
+    title: 'Earthlings', 
+    description: 'Réseau social de photos partagées', 
+    tags: ['Ionic', 'Java'], 
+    image: '/images/earthlings.png', 
+    wip: true 
+  },
 ]
 
 export default function Projects(){
@@ -35,39 +54,19 @@ export default function Projects(){
       <h2 className="text-2xl sm:text-3xl font-bold">Projets</h2>
       <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {projects.map((p) => (
-          <article key={p.title} className={`rounded-xl border border-white/10 bg-white/5 p-5 hover:bg-white/10 transition relative ${p.wip ? 'overflow-visible' : ''}`}>
+          <article 
+            key={p.title} 
+            className="rounded-xl border border-white/10 bg-white/5 p-5 hover:bg-white/10 transition relative overflow-hidden"
+          >
             {p.wip && (
-              <div style={{
-                position: 'absolute',
-                top: '0',
-                left: '0',
-                width: '140%',
-                height: '30px',
-                background: 'linear-gradient(135deg, #f97316 0%, #ef4444 100%)',
-                transform: 'rotate(-45deg)',
-                transformOrigin: 'top left',
-                borderRadius: '6px',
-                zIndex: 1
-              }}>
-                <div style={{
-                  position: 'absolute',
-                  top: '10px',
-                  left: '10px',
-                  background: 'linear-gradient(135deg, #f97316, #ef4444)',
-                  color: 'white',
-                  fontSize: '0.75rem',
-                  fontWeight: 'bold',
-                  padding: '0.25rem 0.75rem',
-                  borderRadius: '6px',
-                  zIndex: 10,
-                  boxShadow: '0 2px 4px rgba(0,0,0,0.3)',
-                  transform: 'rotate(45deg)',
-                  transformOrigin: 'center'
-                }}>
-                  WORK IN PROGRESS
-                </div>
+              <div className="absolute top-2 right-2">
+                <span className="wip-badge">
+                  WIP
+                </span>
               </div>
             )}
+
+
             {p.images ? (
               <div className="mb-4">
                 <Carousel images={p.images} alt={p.title} descriptions={p.descriptions} />
@@ -85,11 +84,17 @@ export default function Projects(){
                 />
               </div>
             ) : null}
+
             <h3 className="text-lg font-semibold relative z-10">{p.title}</h3>
             <p className="mt-2 text-sm text-slate-300 relative z-10">{p.description}</p>
             <div className="mt-4 flex flex-wrap gap-2 relative z-10">
               {p.tags.map((t) => (
-                <span key={t} className="text-xs rounded-full bg-slate-800/80 border border-white/10 px-2 py-0.5">{t}</span>
+                <span 
+                  key={t} 
+                  className="text-xs rounded-full bg-slate-800/80 border border-white/10 px-2 py-0.5"
+                >
+                  {t}
+                </span>
               ))}
             </div>
           </article>
@@ -97,8 +102,14 @@ export default function Projects(){
       </div>
 
       {zoomImage && (
-        <div className="fixed inset-0 z-50 bg-black/90 p-4" onClick={() => setZoomImage(null)}>
-          <div className="relative mx-auto flex h-full max-w-7xl flex-col" onClick={(e) => e.stopPropagation()}>
+        <div 
+          className="fixed inset-0 z-50 bg-black/90 p-4" 
+          onClick={() => setZoomImage(null)}
+        >
+          <div 
+            className="relative mx-auto flex h-full max-w-7xl flex-col" 
+            onClick={(e) => e.stopPropagation()}
+          >
             <div className="flex-1 flex items-center justify-center gap-8">
               {zoomDescription && (
                 <div className="hidden lg:block w-80 text-white">
@@ -106,9 +117,18 @@ export default function Projects(){
                   <p className="text-slate-300 leading-relaxed">{zoomDescription}</p>
                 </div>
               )}
-              <img src={zoomImage} alt="zoom" className="max-h-[80vh] max-w-[60vw] object-contain" />
+              <img 
+                src={zoomImage} 
+                alt="zoom" 
+                className="max-h-[80vh] max-w-[60vw] object-contain" 
+              />
             </div>
-            <button type="button" aria-label="Fermer" className="absolute top-0 right-0 m-4 rounded bg-white/10 hover:bg-white/20 px-3 py-1.5" onClick={() => setZoomImage(null)}>
+            <button 
+              type="button" 
+              aria-label="Fermer" 
+              className="absolute top-0 right-0 m-4 rounded bg-white/10 hover:bg-white/20 px-3 py-1.5" 
+              onClick={() => setZoomImage(null)}
+            >
               Fermer
             </button>
           </div>
@@ -116,4 +136,4 @@ export default function Projects(){
       )}
     </section>
   )
-} 
+}

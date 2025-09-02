@@ -4,6 +4,7 @@ const techSkills = [
   { name: 'PHP', level: 'Intermédiaire' },
   { name: 'SQL', level: 'Avancé' },
   { name: 'Android', level: 'Intermédiaire' },
+  { name: 'typescript', level: 'Intermédiaire' },
 ]
 
 const softSkills = [

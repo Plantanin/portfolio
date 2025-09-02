@@ -27,7 +27,6 @@ const projects = [
     tags: ['RFID', 'LED', 'Fusion 360', 'Keypad', 'C++'], 
     images: ['/images/vault-1.jpg','/images/vault-2.jpg','/images/vault-3.jpg','/images/vault-4.jpg'], 
     descriptions: vaultDescriptions 
-    
   },
   { 
     title: 'Formation RGPD', 
@@ -45,28 +44,25 @@ const projects = [
   },
 ]
 
-export default function Projects(){
+export default function Projects() {
   const [zoomImage, setZoomImage] = useState(null)
   const [zoomDescription, setZoomDescription] = useState(null)
 
   return (
     <section id="projects" className="mx-auto max-w-6xl px-4 py-16">
       <h2 className="text-2xl sm:text-3xl font-bold">Projets</h2>
+
       <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {projects.map((p) => (
           <article 
             key={p.title} 
-            className="rounded-xl border border-white/10 bg-white/5 p-5 hover:bg-white/10 transition relative overflow-hidden"
+            className="relative rounded-xl border border-white/10 bg-white/5 p-5 hover:bg-white/10 transition overflow-hidden"
           >
-            {p.wip && (
-              <div className="absolute top-2 right-2">
-                <span className="wip-badge">
-                  WIP
-                </span>
-              </div>
-            )}
+            {/* Bandeau WIP */}
+            
 
 
+            {/* Images ou carousel */}
             {p.images ? (
               <div className="mb-4">
                 <Carousel images={p.images} alt={p.title} descriptions={p.descriptions} />
@@ -85,9 +81,10 @@ export default function Projects(){
               </div>
             ) : null}
 
-            <h3 className="text-lg font-semibold relative z-10">{p.title}</h3>
-            <p className="mt-2 text-sm text-slate-300 relative z-10">{p.description}</p>
-            <div className="mt-4 flex flex-wrap gap-2 relative z-10">
+            <h3 className="text-lg font-semibold">{p.title}</h3>
+            <p className="mt-2 text-sm text-slate-300">{p.description}</p>
+
+            <div className="mt-4 flex flex-wrap gap-2">
               {p.tags.map((t) => (
                 <span 
                   key={t} 
@@ -101,28 +98,24 @@ export default function Projects(){
         ))}
       </div>
 
+      {/* Zoom overlay */}
       {zoomImage && (
         <div 
-          className="fixed inset-0 z-50 bg-black/90 p-4" 
+          className="fixed inset-0 z-50 bg-black/90 p-4 flex items-center justify-center"
           onClick={() => setZoomImage(null)}
         >
-          <div 
-            className="relative mx-auto flex h-full max-w-7xl flex-col" 
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="flex-1 flex items-center justify-center gap-8">
-              {zoomDescription && (
-                <div className="hidden lg:block w-80 text-white">
-                  <h3 className="text-xl font-semibold mb-3">Formation RGPD au Campus</h3>
-                  <p className="text-slate-300 leading-relaxed">{zoomDescription}</p>
-                </div>
-              )}
-              <img 
-                src={zoomImage} 
-                alt="zoom" 
-                className="max-h-[80vh] max-w-[60vw] object-contain" 
-              />
-            </div>
+          <div className="relative max-w-7xl w-full flex gap-8" onClick={(e) => e.stopPropagation()}>
+            {zoomDescription && (
+              <div className="hidden lg:block w-80 text-white">
+                <h3 className="text-xl font-semibold mb-3">Détails du projet</h3>
+                <p className="text-slate-300 leading-relaxed">{zoomDescription}</p>
+              </div>
+            )}
+            <img 
+              src={zoomImage} 
+              alt="zoom" 
+              className="max-h-[80vh] max-w-[60vw] object-contain rounded-lg"
+            />
             <button 
               type="button" 
               aria-label="Fermer" 
